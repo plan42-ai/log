@@ -54,7 +54,13 @@ func (c ContextHandler) WithGroup(name string) slog.Handler {
 	}
 }
 
-func SetupLogging() {
+func SetupTextLogging() {
+	handler := NewContextHandler(slog.NewTextHandler(os.Stderr, nil))
+	logger := slog.New(handler)
+	slog.SetDefault(logger)
+}
+
+func SetupJSONLogging() {
 	handler := NewContextHandler(slog.NewTextHandler(os.Stderr, nil))
 	logger := slog.New(handler)
 	slog.SetDefault(logger)
