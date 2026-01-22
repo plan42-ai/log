@@ -61,7 +61,7 @@ func SetupTextLogging() {
 }
 
 func SetupJSONLogging() {
-	handler := NewContextHandler(slog.NewTextHandler(os.Stderr, nil))
+	handler := NewContextHandler(slog.NewJSONHandler(os.Stderr, nil))
 	logger := slog.New(handler)
 	slog.SetDefault(logger)
 }
